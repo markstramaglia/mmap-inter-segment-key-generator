@@ -17,7 +17,7 @@ public class InterSegmentKeyGenerator
 	public static String generateKey(String message)
 	{
 		MessageDigest md;
-        	byte[] messageBytes = null;
+		byte[] messageBytes = null;
 		String out = "";
         
 		// Convert the string to Character Set UTF-16LE before hashing
@@ -58,7 +58,6 @@ public class InterSegmentKeyGenerator
 	    	// Return the SHA-512 hash as a String
 		return out;
 	}
-	
 	
     public static void main(String[] args)
     {
