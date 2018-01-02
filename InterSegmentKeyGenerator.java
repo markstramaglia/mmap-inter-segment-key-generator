@@ -23,31 +23,35 @@ public class InterSegmentKeyGenerator
 		// Convert the string to Character Set UTF-16LE before hashing
 		try
 		{
-				messageBytes = message.getBytes("UTF-16LE");
-			} catch (UnsupportedEncodingException e) 
-			{
-				System.out.println("Unsupported character set" + e);
-			}
+			messageBytes = message.getBytes("UTF-16LE");
+		}
+		catch (UnsupportedEncodingException e) 
+		{
+			System.out.println("Unsupported character set" + e);
+		}
 
-			// Generate the SHA-512 for the input message
+		// Generate the SHA-512 for the input message
 		try
 		{
-		    md= MessageDigest.getInstance("SHA-512");
+			md= MessageDigest.getInstance("SHA-512");
 
-		    md.update(messageBytes);
+		    	md.update(messageBytes);
 
-		    byte[] mb = md.digest();
-		    for (int i = 0; i < mb.length; i++) {
-
-			byte temp = mb[i];
-			String s = Integer.toHexString(new Byte(temp));
-			while (s.length() < 2) {
-			    s = "0" + s;
+		    	byte[] mb = md.digest();
+		    	for (int i = 0; i < mb.length; i++)
+			{
+				byte temp = mb[i];
+				String s = Integer.toHexString(new Byte(temp));
+				while (s.length() < 2)
+				{
+			    		s = "0" + s;
+				}
+				s = s.substring(s.length() - 2);
+				out += s;
 			}
-			s = s.substring(s.length() - 2);
-			out += s;
-		    }
-		} catch (NoSuchAlgorithmException e) {
+		}
+		catch (NoSuchAlgorithmException e)
+		{
 		    System.out.println("ERROR: " + e.getMessage());
 		}
 
